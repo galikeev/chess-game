@@ -42,23 +42,26 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard, currentPlayer, swapPla
     }
 
     return (
-        <div className="board">
-            {board.cells.map((row, index) => {
-                return (
-                    <React.Fragment key={index}>
-                        {row.map(cell => {
-                            return (
-                                <CellComponent 
-                                    click={click}
-                                    cell={cell} 
-                                    key={cell.id}
-                                    selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
-                                />
-                            )
-                        })}
-                    </React.Fragment>
-                )
-            })}
+        <div>
+            <h3>Текущий игрок {currentPlayer?.color}</h3>
+            <div className="board">
+                {board.cells.map((row, index) => {
+                    return (
+                        <React.Fragment key={index}>
+                            {row.map(cell => {
+                                return (
+                                    <CellComponent 
+                                        click={click}
+                                        cell={cell} 
+                                        key={cell.id}
+                                        selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y}
+                                    />
+                                )
+                            })}
+                        </React.Fragment>
+                    )
+                })}
+            </div>
         </div>
     );
 };
